@@ -191,13 +191,14 @@ public class AirportController {
             return "FAILURE";
         }
 
-        ticketDb.get(flightId).remove(passengerId);
         int passengerPaid = passengerPayment.get(passengerId);
         passengerPayment.remove(passengerId);
 
         int revenue = revenueDb.get(flightId);
         revenue = revenue-passengerPaid;
         revenueDb.put(flightId, revenue);
+
+        ticketDb.get(flightId).remove(passengerId);
 
        return "SUCCESS";
     }
