@@ -153,9 +153,9 @@ public class AirportController {
 
         } else if(Objects.isNull(ticketDb.get(flightId))){ //booking passenger for the first time
 
-            ticketDb.put(flightId, new ArrayList<>());
+            //ticketDb.put(flightId, new ArrayList<>());
 
-            List<Integer> passengers = ticketDb.get(flightId);
+            List<Integer> passengers = new ArrayList<>();
             passengers.add(passengerId);
 
             int fare = calculateFlightFare(flightId);
