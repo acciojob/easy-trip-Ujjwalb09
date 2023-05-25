@@ -116,7 +116,7 @@ public class AirportController {
 
         int noOfPeopleBooked = ticketDb.get(flightId).size();
 
-        return 3000+(noOfPeopleBooked*50);
+        return noOfPeopleBooked*50 + 3000;
 
     }
 
