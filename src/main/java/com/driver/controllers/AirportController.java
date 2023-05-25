@@ -118,13 +118,20 @@ public class AirportController {
 //
 //        return noOfPeopleBooked*50 + 3000;
 
-        int fare=3000;
-        int alreadyBooked=0;
+//        int fare=3000;
+//        int alreadyBooked=0;
+//
+//        if(ticketDb.containsKey(flightId))
+//            alreadyBooked=ticketDb.get(flightId).size();
 
-        if(ticketDb.containsKey(flightId))
-            alreadyBooked=ticketDb.get(flightId).size();
+        //return (fare+(alreadyBooked*50));
 
-        return (fare+(alreadyBooked*50));
+        if(Objects.isNull(ticketDb.get(flightId))){
+               return 3000;
+        }
+
+        int noOfPeopleBooked = ticketDb.get(flightId).size();
+        return noOfPeopleBooked*50 + 3000;
 
     }
 
