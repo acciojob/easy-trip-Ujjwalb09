@@ -126,9 +126,9 @@ public class AirportController {
 
         //return (fare+(alreadyBooked*50));
 
-//        if(Objects.isNull(ticketDb.get(flightId))){
-//               return 3000;
-//        }
+        if(Objects.isNull(ticketDb.get(flightId))){ //first person checking the flight fare as ticket Db is empty
+               return 3000;
+        }
 
         int noOfPeopleBooked = ticketDb.get(flightId).size();
         return noOfPeopleBooked*50 + 3000;
