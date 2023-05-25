@@ -114,11 +114,6 @@ public class AirportController {
         //Suppose if 2 people have booked the flight already : the price of flight for the third person will be 3000 + 2*50 = 3100
         //This will not include the current person who is trying to book, he might also be just checking price
 
-        if(Objects.isNull(ticketDb.get(flightId).size())){
-            return 0;
-        }
-
-
         int noOfPeopleBooked = ticketDb.get(flightId).size();
 
         return noOfPeopleBooked*50 + 3000;
@@ -158,9 +153,9 @@ public class AirportController {
 
         } else if(Objects.isNull(ticketDb.get(flightId))){ //booking passenger for the first time
 
-            //ticketDb.put(flightId, new ArrayList<>());
+            ticketDb.put(flightId, new ArrayList<>());
 
-            List<Integer> passengers = new ArrayList<>();
+            List<Integer> passengers = ticketDb.get(flightId);
             passengers.add(passengerId);
 
             int fare = calculateFlightFare(flightId);
