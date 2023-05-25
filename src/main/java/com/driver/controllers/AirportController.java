@@ -140,14 +140,13 @@ public class AirportController {
             List<Integer> passengers = ticketDb.get(flightId);
             passengers.add(passengerId);
 
-            ticketDb.put(flightId, passengers);
-
             int fare = calculateFlightFare(flightId);
             passengerPayment.put(passengerId, fare);
             int revenue = revenueDb.getOrDefault(flightId, 0);
             revenue = revenue + fare;
             revenueDb.put(flightId, revenue);
 
+            ticketDb.put(flightId, passengers);
 
             return "SUCCESS";
 
@@ -158,13 +157,14 @@ public class AirportController {
 
             List<Integer> passengers = ticketDb.get(flightId);
             passengers.add(passengerId);
-            ticketDb.put(flightId, passengers);
 
             int fare = calculateFlightFare(flightId);
             passengerPayment.put(passengerId, fare);
             int revenue = revenueDb.getOrDefault(flightId, 0);
             revenue = revenue + fare;
             revenueDb.put(flightId, revenue);
+
+            ticketDb.put(flightId, passengers);
 
             return "SUCCESS";
         }
